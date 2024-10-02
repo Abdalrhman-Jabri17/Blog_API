@@ -1,66 +1,60 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+# Personal Blogging Platform API
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+## Overview
 
-## About Laravel
+This project is a RESTful API designed to power a personal blog. It provides essential CRUD (Create, Read, Update, Delete) operations for managing blog articles. The API interacts with a database (either SQL or NoSQL) to store and retrieve article data, and it includes functionality for handling article creation, retrieval, updating, and deletion.
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+## Skills and Technologies Used
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+- **CRUD Operations**: To perform the basic operations such as creating, reading, updating, and deleting articles.
+- **Databases**: Either SQL (e.g., MySQL, PostgreSQL) or NoSQL (e.g., MongoDB) to store and manage articles.
+- **RESTful API**: Server-side API that follows REST principles, enabling easy communication between the backend and clients.
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+## API Endpoints
 
-## Learning Laravel
+### 1. **Get a List of Articles**
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+- **Endpoint**: `/articles`
+- **Method**: `GET`
+- **Description**: Returns a list of all published articles. You can apply optional reltionship such as tags.
+- **Query Parameters**:
+  - `include_tags`: Show article associated tags .
 
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
+### 2. **Get a Single Article**
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+- **Endpoint**: `/articles/{id}`
+- **Method**: `GET`
+- **Description**: Returns a specific article identified by its unique ID.
 
-## Laravel Sponsors
+### 3. **Create a New Article**
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
+- **Endpoint**: `/articles`
+- **Method**: `POST`
+- **Description**: Creates a new article with the provided content. The article will be saved in the database and made available for reading.
+- **Request Body**:
+  - `title`: The title of the article.
+  - `body`: The body of the article.
 
-### Premium Partners
+### 4. **Update an Article**
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[WebReinvent](https://webreinvent.com/)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Jump24](https://jump24.co.uk)**
-- **[Redberry](https://redberry.international/laravel/)**
-- **[Active Logic](https://activelogic.com)**
-- **[byte5](https://byte5.de)**
-- **[OP.GG](https://op.gg)**
+- **Endpoint**: `/articles/{id}`
+- **Method**: `PUT`
+- **Description**: Updates an existing article by its ID. The title, content, or tags of the article can be modified.
+- **Request Body**:
+  - `title`: The updated title of the article.
+  - `body`: The updated body of the article.
 
-## Contributing
+### 5. **Delete an Article**
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+- **Endpoint**: `/articles/{id}`
+- **Method**: `DELETE`
+- **Description**: Deletes a specific article from the database using its ID.
 
-## Code of Conduct
+### 6. **Attach Tag with article**
+- **Endpoint**: `/articles/{id}/tags`
+- **Method**: `POST`
+- **Description**: Attach a specific tag from the database using its ID to an article.
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+## Conclusion
 
-## Security Vulnerabilities
-
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
-
-## License
-
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+This API provides the foundational capabilities to manage a personal blog through a simple, clean interface. By utilizing a database for storage, it ensures scalability and efficiency in managing blog content.
